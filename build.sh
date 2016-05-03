@@ -1,6 +1,9 @@
 [ -d openwrt ] || git clone --depth=1 https://github.com/openwrt/openwrt.git --branch chaos_calmer
 cd openwrt
 
+./scripts/feeds clean
+./scripts/feeds update -a
+
 cat > .config << EOF
 CONFIG_TARGET_x86=y
 CONFIG_TARGET_x86_64=y
