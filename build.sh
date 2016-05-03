@@ -29,5 +29,6 @@ EOF
 
 make defconfig
 
-make -j3 toolchain/install
-make -j3 target/install
+make -j1 V=s prepare
+make -j1 V=s target/compile
+make -j1 V=s target/install
