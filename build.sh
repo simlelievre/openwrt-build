@@ -1,11 +1,6 @@
 [ -d openwrt ] || git clone --depth=1 https://github.com/openwrt/openwrt.git --branch chaos_calmer
 cd openwrt
 
-echo "src-link dev $(readlink -f ../feeds)" > feeds.conf
-./scripts/feeds clean
-./scripts/feeds update -a
-./scripts/feeds install -a
-
 cat > .config << EOF
 CONFIG_TARGET_x86=y
 CONFIG_TARGET_x86_64=y
@@ -20,6 +15,7 @@ CONFIG_LIBC_USE_GLIBC=y
 CONFIG_LIBC_VERSION="2.21"
 CONFIG_PACKAGE_libpthread=y
 CONFIG_PACKAGE_librt=y
+CONFIG_IB=y
 CONFIG_SDK=y
 CONFIG_STRIP_ARGS="--strip-all"
 CONFIG_TARGET_SUFFIX="gnu"
