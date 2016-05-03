@@ -1,2 +1,7 @@
 sudo: false
-script: sh build.sh
+
+language: c
+
+script:
+    - sh build.sh
+    - find . -name "*.img"
