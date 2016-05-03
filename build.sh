@@ -28,4 +28,6 @@ CONFIG_USE_STRIP=y
 EOF
 
 make defconfig
+
+make -j3 toolchain/install
 make -j3 target/install
