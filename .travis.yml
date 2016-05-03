@@ -1,7 +1,13 @@
 sudo: false
-
 language: c
-
 script:
-    - sh build.sh
-    - find . -name "*.img"
+- sh build.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: HRXSvYwiZ66r3kDPayBLoCmXM+ulOIl50DHa7ypcq3GCsDfIdbkwdrVNiX91YmEZQR5NscmnEtF615/uzYGSa8zdzlDuijClXGmVyKX5MqYxOQLJxRlaLFv1mpuS7gf2p2rGFVhhMn0YdTvcjB+mdDOco74ySWWkgXYHWddszdF2ijpfELDtyssABxHsRxdfHenoZTo4oLTtcSfVw9qHlOa1AyOWmUdw6kAdf+XLrPGSS2TIeSgxZQ8ZattS4uWQAVEu2GDOjPuEJXYsbwYm0QGdy75wiUtFsbniq5IjrXYRwoTBZAspjd7SGNJuoB58dGeOudX1LZjwCdBQBM5XZFm2+TSUQexf3U7fRASRAXYtPUaoFxwe58D+k7VKyQehDUGv0X/nanM/asWk9WvoAVpJ1o8U00SkUG7bmt4AcntYuw2gWm7/VgZlQ43PpBwYVuSCB+Gs/tK+whPcT3E6O+ECRytnFzxqMI0CeBZkGM40T258ObOKE8fLgot8LF/n7XmKc4Pk2nYcvMGLmiXc9ye/EDWj5dBQxdsLDfNaOUSXS585bS23HCNuUVjlVCtfwV1Qz3CYCehRdkAEJvNrqLbbAgko+7GCt6hCKkAulWoKk0vdqrEMaljdXa2qQGB17J54IVFaHKXA181eVKQ5HIvzc7W+RG+ev5TyFM9/lfw=
+  skip_cleanup: true
+  file_glob: true
+  file: openwrt/bin/x86-glibc/OpenWrt-SDK-*.tar.bz2
+  on:
+    repo: angt/openwrt-build
