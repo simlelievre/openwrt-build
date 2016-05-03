@@ -1,6 +1,10 @@
 [ -d openwrt ] || git clone --depth=1 https://github.com/openwrt/openwrt.git --branch chaos_calmer
 cd openwrt
 
+cat > feeds.conf << EOF
+# empty
+EOF
+
 ./scripts/feeds clean
 ./scripts/feeds update -a
 
@@ -29,6 +33,4 @@ EOF
 
 make defconfig
 
-make -j1 V=s prepare
-make -j1 V=s target/compile
-make -j1 V=s target/install
+make -j2
