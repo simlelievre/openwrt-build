@@ -1,4 +1,4 @@
-[ -d openwrt ] || git clone https://github.com/openwrt/openwrt.git --branch chaos_calmer
+[ -d openwrt ] || git clone --depth=1 https://github.com/openwrt/openwrt.git --branch chaos_calmer
 cd openwrt
 
 echo "src-link dev $(readlink -f ../feeds)" > feeds.conf
