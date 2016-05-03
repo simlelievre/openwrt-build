@@ -28,6 +28,6 @@ CONFIG_USE_LIBSTDCXX=y
 CONFIG_USE_STRIP=y
 EOF
 
-yes '' | make oldconfig
+make defconfig
 
 make -j3
