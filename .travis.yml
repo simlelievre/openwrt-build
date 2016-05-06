@@ -3,6 +3,7 @@ language: c
 cache:
   timeout: 3600
   apt: true
+  ccache: true
   directories:
     - build_dir/host
     - staging_dir/host
@@ -10,7 +11,7 @@ cache:
     - dl
     - package/feeds
 script:
-- sh build.sh
+  - sh build.sh
 deploy:
   provider: releases
   api_key:
