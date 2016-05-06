@@ -16,6 +16,7 @@ script:
   - cd openwrt
   - make tools/install -j4
   - make toolchain/install -j4
+  - make toolchain/install-j1 V=s
   - make world -j4
 deploy:
   provider: releases
