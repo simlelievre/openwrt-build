@@ -3,14 +3,21 @@ language: c
 cache:
   timeout: 3600
   apt: true
+  ccache: true
   directories:
     - build_dir/host
     - staging_dir/host
     - tools
     - dl
     - package/feeds
+install:
+  - sh prepare.sh
 script:
-- sh build.sh
+  - cd openwrt
+  - make tools/install -j2
+  - make toolchain/glibc/compile -j2 V=w
+  - make toolchain/install -j2
+  - make world -j2
 deploy:
   provider: releases
   api_key:
