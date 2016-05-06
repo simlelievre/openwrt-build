@@ -14,10 +14,10 @@ install:
   - sh prepare.sh
 script:
   - cd openwrt
-  - make tools/install -j4
-  - make toolchain/install -j4 V=w
-  - make toolchain/install -j1 V=s
-  - make world -j4
+  - make tools/install -j2
+  - make toolchain/glibc/compile -j2 V=w
+  - make toolchain/install -j2
+  - make world -j2
 deploy:
   provider: releases
   api_key:
