@@ -13,6 +13,7 @@ cache:
 install:
   - sh prepare.sh
 script:
+  - cd openwrt
   - make tools/install -j4
   - make toolchain/install -j4
   - make world -j4
