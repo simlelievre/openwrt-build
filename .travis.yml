@@ -14,8 +14,7 @@ script:
 deploy:
   provider: releases
   api_key:
-  skip_cleanup: true
-  file_glob: true
+    secure: uVOjdiQQfEh9KPhEigmNwhjd7YDwtE6OT5uOK4aNF/W9Q+kqkrR7PF77zLwe2bBKlytE8CoBKekIdERSUiytCOWtHsWC00yuyrA4Uz3TPS5Gg5PIGwzfLq47x+cqpj9d8WNINZNDR8BILIoVg1hMng0S3o2vPPz1MQtSwUDSkCznzv2HKvfa7Xgwz+beUdxqUpxhlZd/urWqkjLBnKjq9nhl25E1pKFoOIwzI3Nkx6Rj1AqHeXD91gy3CSWuWEtCSKdrODKJlKSShPxtjN04BxLAUGKBVreI0gWeIpfP1W4mHWDWdyxOvSD4OcKXrz4D/WEIOsV7N8jVU5/B1gdnAQ9UMcyIprl5yo3HjuveJ9QwdImV6YKxcQuVoXZdUtL7g3hG9GSaPx88TWXugMCwAbJVr8azXWtzdOfKbedYNC/aaspxpcS6qywyDdioXoZBZ5SuePVnza3TCDl6xESRqSITRq13MzQFg1E1cc2alsLuuiWj/zPMM0c3+dwZ8x00zC063nvub/KuZ5SAj/wcBRbTC+itkaWhrICRkWnNs9f4o4V2VkTVyCac1uKHh5v0zSOm6p/x1+7mmxC8of5+LW71kgELLf42xPILM1BoFlNlLVW02OH2cJt0mxDlCZTnHVS03qkEE2E++MYM7AcQ9rIhyL36r8NwZfvxhUov6Gk=
   file: openwrt/bin/x86-glibc/OpenWrt-*.tar.bz2
   on:
     repo: simlelievre/openwrt-build

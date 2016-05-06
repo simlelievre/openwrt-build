@@ -1,4 +1,4 @@
-[ -d openwrt ] || git clone --depth=1 https://github.com/simlelievre/overthebox-openwrt.git --branch overthebox.cc
+[ -d openwrt ] || git clone --depth=1 --branch overthebox.cc https://github.com/simlelievre/overthebox-openwrt.git openwrt
 cd openwrt
 
 cat > feeds.conf << EOF
