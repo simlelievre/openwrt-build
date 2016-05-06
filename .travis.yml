@@ -10,8 +10,12 @@ cache:
     - tools
     - dl
     - package/feeds
+install:
+  - sh prepare.sh
 script:
-  - sh build.sh
+  - make tools/install -j4
+  - make toolchain/install -j4
+  - make world -j4
 deploy:
   provider: releases
   api_key:

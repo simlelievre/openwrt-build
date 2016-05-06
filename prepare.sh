@@ -34,4 +34,3 @@ EOF
 
 make defconfig
 
-make -j4
