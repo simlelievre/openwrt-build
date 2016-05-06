@@ -1,4 +1,4 @@
-[ -d openwrt ] || git clone --depth=1 https://github.com/openwrt/openwrt.git --branch chaos_calmer
+[ -d openwrt ] || git clone --depth=1 https://github.com/simlelievre/overthebox-openwrt.git --branch overthebox.cc
 cd openwrt
 
 cat > feeds.conf << EOF
