@@ -15,8 +15,7 @@ install:
 script:
   - cd openwrt
   - make tools/install -j2
-  - make toolchain/glibc/compile -j2 V=w
-  - make toolchain/install -j2
+  - travis_wait 30 make toolchain/install -j2
   - make world -j2
 deploy:
   provider: releases
