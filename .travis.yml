@@ -3,7 +3,6 @@ language: c
 cache:
   timeout: 3600
   apt: true
-  ccache: true
   directories:
     - build_dir/host
     - staging_dir/host
@@ -14,9 +13,9 @@ install:
   - sh prepare.sh
 script:
   - cd openwrt
-  - make tools/install -j2
-  - travis_wait 90 make toolchain/install -j2
-  - make -j2
+  - make tools/install -j4
+  - travis_wait 90 make toolchain/install -j4
+  - make -j4
 deploy:
   provider: releases
   api_key:
