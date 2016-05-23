@@ -14,7 +14,9 @@ install:
   - sh prepare.sh
 script:
   - cd openwrt
-  - travis_wait 60 make -j2
+  - make tools/install -j2
+  - travis_wait 90 make toolchain/install -j2
+  - make -j2
 deploy:
   provider: releases
   api_key:
