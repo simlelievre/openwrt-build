@@ -1,4 +1,12 @@
 [ -d openwrt ] || git clone --depth=1 --branch overthebox.cc https://github.com/simlelievre/overthebox-openwrt.git openwrt
+
+mv build_dir/host openwrt/
+mv staging_dir/host openwrt/
+mv tools openwrt/
+mv dl openwrt/
+mv package/feeds openwrt/package
+
+
 cd openwrt
 curl -s "$CONFIGURL" > '.config'
 
