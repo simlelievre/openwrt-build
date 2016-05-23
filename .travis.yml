@@ -4,11 +4,11 @@ cache:
   timeout: 3600
   apt: true
   directories:
-    - build_dir/host
-    - staging_dir/host
-    - tools
-    - dl
-    - package/feeds
+    - openwrt/build_dir/host
+    - openwrt/staging_dir/host
+    - openwrt/tools
+    - openwrt/dl
+    - openwrt/package/feeds
 install:
   - sh prepare.sh
 script:
