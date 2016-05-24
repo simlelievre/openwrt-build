@@ -35,5 +35,6 @@ function set_feeds(){
     ./scripts/feeds install -p overthebox -f netifd
     ./scripts/feeds install -p overthebox -f dnsmasq
     ./scripts/feeds install -a
+    cd
 }
 
