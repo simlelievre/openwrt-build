@@ -1,11 +1,12 @@
-
 DIR="openwrt"
+R=$(pwd)
 
 function clone(){
     [ -d $DIR ] || git clone --depth=1 --branch overthebox.cc https://github.com/simlelievre/overthebox-openwrt.git $DIR
 }
 
 function restore_cache(){
+    cd $R
     mkdir $DIR/{build_dir,staging_dir,package}
     mv build_dir/host $DIR/
     mv staging_dir/host $DIR/
@@ -16,7 +17,7 @@ function restore_cache(){
 }
 
 function backup_cache(){
-    cd
+    cd $R
     mv $DIR/build_dir/host build_dir/
     mv $DIR/staging_dir/host staging_dir/
     mv $DIR/tools .
@@ -35,6 +36,6 @@ function set_feeds(){
     ./scripts/feeds install -p overthebox -f netifd
     ./scripts/feeds install -p overthebox -f dnsmasq
     ./scripts/feeds install -a
-    cd
+    cd $R
 }
 
