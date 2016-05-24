@@ -5,14 +5,18 @@ function clone(){
     [ -d $DIR ] || git clone --depth=1 --branch overthebox.cc https://github.com/simlelievre/overthebox-openwrt.git $DIR
 }
 
+function dmv(){
+    [ -d "$1"] && mv $1 $2
+}
+
 function restore_cache(){
     cd $R
     mkdir $DIR/{build_dir,staging_dir,package}
-    mv cache/build_dir_host $DIR/build_dir/host
-    mv cache/staging_dir_host $DIR/staging_dir/host
-    mv cache/tools/* $DIR/tools/
+    dmv cache/build_dir_host $DIR/build_dir/host
+    dmv cache/staging_dir_host $DIR/staging_dir/host
+    dmv cache/tools/* $DIR/tools/
     rm -fr cache/tools
-    mv cache/dl $DIR/
+    dmv cache/dl $DIR/
 }
 
 function backup_cache(){
