@@ -11,7 +11,7 @@ function dmv(){
 
 function restore_cache(){
     cd $R
-    mkdir $DIR/{build_dir,staging_dir,package}
+    mkdir -p $DIR/{build_dir,staging_dir,package} 
     dmv cache/build_dir_host $DIR/build_dir/host
     dmv cache/staging_dir_host $DIR/staging_dir/host
     dmv cache/tools/* $DIR/tools/
