@@ -6,7 +6,7 @@ function clone(){
 }
 
 function dmv(){
-    [ -d "$1"] && mv $1 $2
+    [ -d "$1" ] && mv $1 $2
 }
 
 function restore_cache(){
