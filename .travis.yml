@@ -4,17 +4,13 @@ cache:
   timeout: 3600
   apt: true
   directories:
-    - build_dir/host
-    - staging_dir/host
-    - tools
-    - dl
-    - package/feeds
+    - cache
 install:
   - source ./lib.sh
   - clone
   - restore_cache
-  - load_config
   - set_feeds
+  - set_config
 script:
   - cd $DIR
   - make tools/install -j4

@@ -8,34 +8,45 @@ function clone(){
 function restore_cache(){
     cd $R
     mkdir $DIR/{build_dir,staging_dir,package}
-    mv build_dir/host $DIR/
-    mv staging_dir/host $DIR/
-    mv tools/* $DIR/
-    rm -fr tools
-    mv dl $DIR/
-    mv package/feeds $DIR/package
+    mv cache/build_dir_host $DIR/build_dir/host
+    mv cache/staging_dir_host $DIR/staging_dir/host
+    mv cache/tools/* $DIR/tools/
+    rm -fr cache/tools
+    mv cache/dl $DIR/
 }
 
 function backup_cache(){
     cd $R
-    mv $DIR/build_dir/host build_dir/
-    mv $DIR/staging_dir/host staging_dir/
-    mv $DIR/tools .
-    mv $DIR/dl .
-    mv $DIR/package/feeds package/
-}
-
-function load_config(){
-    curl -s "$CONFIGURL" > $DIR/.config
+    mv $DIR/build_dir/host cache/build_dir_host
+    mv $DIR/staging_dir/host cache/staging_dir_host
+    mv $DIR/tools cache/
+    mv $DIR/dl cache/
 }
 
 function set_feeds(){
-    cd $DIR
+    cd $R/$DIR
+    grep -v "^#" feeds.conf.default > feeds.conf
+    echo src-git overthebox https://github.com/ovh/overthebox-feeds.git >> feeds.conf
     ./scripts/feeds update -a
     ./scripts/feeds install -a -p overthebox
     ./scripts/feeds install -p overthebox -f netifd
     ./scripts/feeds install -p overthebox -f dnsmasq
     ./scripts/feeds install -a
+    cd feeds/overthebox
+    FEEDID=$(git log --format="%h" -n 1 )
     cd $R
+}
+
+function set_config() {
+    if [ -z "$CONFIGURL" ];
+    then
+        curl -s "$CONFIGURL" > $DIR/.config
+    else
+	cp $R/config $R/$DIR/.config
+    fi
+
+    cd $R/$DIR
+    make defconfig
+    CONFIGID=$(grep -v ^# .config | grep -v "^$" | sort | sha1sum | cut -b1-12 )
 }
 
