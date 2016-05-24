@@ -10,17 +10,17 @@ cache:
     - dl
     - package/feeds
 install:
-  - sh prepare.sh
+  - source ./lib.sh
+  - clone
+  - restore_cache
+  - load_config
+  - set_feeds
 script:
-  - cd openwrt
+  - cd $DIR
   - make tools/install -j4
   - travis_wait 90 make toolchain/install -j4
   - make -j4
-  - mv build_dir/host ../build_dir/
-  - mv staging_dir/host ../staging_dir/
-  - mv tools ../
-  - mv dl ../
-  - mv package/feeds ../package/
+  - backup_cache
 deploy:
   provider: releases
   api_key:
