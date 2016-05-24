@@ -14,9 +14,10 @@ function restore_cache(){
     mkdir -p $DIR/{build_dir,staging_dir,package} 
     dmv cache/build_dir_host $DIR/build_dir/host
     dmv cache/staging_dir_host $DIR/staging_dir/host
-    dmv cache/tools/* $DIR/tools/
+    [ -d "cache/tools/" ] && dmv cache/tools/* $DIR/tools/
     rm -fr cache/tools
     dmv cache/dl $DIR/
+    echo cache restored
 }
 
 function backup_cache(){
